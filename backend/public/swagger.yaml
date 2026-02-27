@@ -7,7 +7,7 @@ info:
     Authentication is handled via `x-user-id` header.
 
 servers:
-  - url: http://localhost:3000/api
+  - url: https://booking-system-mocha.vercel.app/api
 
 components:
   securitySchemes:
