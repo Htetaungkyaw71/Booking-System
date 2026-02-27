@@ -85,6 +85,10 @@ const userSlice = createSlice({
         state.loading = false;
         state.list = action.payload;
       })
+      .addCase(fetchUsers.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
 
       .addCase(createUser.pending, (state) => {
         state.loading = true;

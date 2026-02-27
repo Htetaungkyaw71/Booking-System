@@ -55,7 +55,7 @@ import { useNavigate } from "react-router-dom";
 function LoginPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const users = useSelector((state) => state.users.list);
+  const { list: users, loading } = useSelector((state) => state.users);
 
   const roleStyles = {
     admin: "bg-purple-100 text-purple-600",
@@ -85,6 +85,13 @@ function LoginPage() {
       </h1>
 
       <h2 className="text-xl mb-6 text-gray-600">Select User Profile</h2>
+      {loading && (
+        <div className="flex justify-center items-center h-50">
+          <div className="text-gray-500 text-sm animate-pulse">
+            Loading users...
+          </div>
+        </div>
+      )}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 text-center justify-center items-center md:grid-cols-3 gap-6 w-full max-w-4xl">
         {users.map((u) => (
