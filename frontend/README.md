@@ -57,7 +57,7 @@ VITE_API_URL=[http://localhost:3000/api](http://localhost:3000/api)
 
 For production:
 
-VITE_API_URL=[https://your-production-api.com/api](https://your-production-api.com/api)
+VITE_API_URL=[https://booking-system-mocha.vercel.app/api](https://your-production-api.com/api)
 
 Important:
 
