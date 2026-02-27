@@ -22,8 +22,58 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+// app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 // app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+// Serve Swagger spec as JSON
+app.get("/docs/swagger.json", (req, res) => {
+  res.setHeader("Content-Type", "application/json");
+  res.send(swaggerSpec);
+});
+
+// Custom HTML with CDN links
+app.use("/docs", swaggerUi.serve, (req: any, res: any, next: any) => {
+  const html = `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Booking System API Docs</title>
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/swagger-ui-dist@5.11.0/swagger-ui.css" />
+  <style>
+    .topbar { display: none; }
+    html { box-sizing: border-box; overflow: -moz-scrollbars-vertical; overflow-y: scroll; }
+    *, *:before, *:after { box-sizing: inherit; }
+    body { margin: 0; background: #fafafa; }
+  </style>
+</head>
+<body>
+  <div id="swagger-ui"></div>
+  <script src="https://unpkg.com/swagger-ui-dist@5.11.0/swagger-ui-bundle.js"></script>
+  <script src="https://unpkg.com/swagger-ui-dist@5.11.0/swagger-ui-standalone-preset.js"></script>
+  <script>
+    window.onload = function() {
+      const ui = SwaggerUIBundle({
+        url: "/docs/swagger.json",
+        dom_id: '#swagger-ui',
+        deepLinking: true,
+        presets: [
+          SwaggerUIBundle.presets.apis,
+          SwaggerUIStandalonePreset
+        ],
+        plugins: [
+          SwaggerUIBundle.plugins.DownloadUrl
+        ],
+        layout: "StandaloneLayout"
+      });
+      window.ui = ui;
+    };
+  </script>
+</body>
+</html>
+  `;
+  res.send(html);
+});
 
 app.use("/api", systemRoutes);
 app.use("/api/bookings", bookingRoutes);
