@@ -18,7 +18,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Construct path relative to this file
-const swaggerPath = path.join(__dirname, "../swagger.yaml");
+const swaggerPath = path.join(__dirname, "../public/swagger.yaml");
 const swaggerDocument = YAML.load(swaggerPath);
 // OR using YAML.load with correct path
 // const swaggerDocument = YAML.load(path.join(process.cwd(), 'swagger.yaml'))
