@@ -12,3 +12,49 @@ router.get("/me", authenticate, getMe);
 router.get("/summary", authenticate, requireRole("owner", "admin"), getSummary);
 
 export default router;
+
+/**
+ * @swagger
+ * tags:
+ *   name: System
+ *   description: System and authentication related APIs
+ */
+
+/**
+ * @swagger
+ * /health:
+ *   get:
+ *     summary: Health check
+ *     tags: [System]
+ *     responses:
+ *       200:
+ *         description: System health status
+ */
+
+/**
+ * @swagger
+ * /me:
+ *   get:
+ *     summary: Get current authenticated user
+ *     tags: [System]
+ *     security:
+ *       - UserIdAuth: []
+ *     responses:
+ *       200:
+ *         description: Current user info
+ */
+
+/**
+ * @swagger
+ * /summary:
+ *   get:
+ *     summary: Get booking summary grouped by user (Admin/Owner only)
+ *     tags: [System]
+ *     security:
+ *       - UserIdAuth: []
+ *     responses:
+ *       200:
+ *         description: Booking summary
+ *       403:
+ *         description: Forbidden
+ */

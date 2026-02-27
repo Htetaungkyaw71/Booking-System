@@ -45,20 +45,89 @@ router.delete(
 
 export default router;
 
-// [
-//   {
-//     id: "f7c12463-20d4-4749-ac78-b6de0f2e4684",
-//     name: "Ada Admin",
-//     role: "admin",
-//   },
-//   {
-//     id: "6a936066-a163-429a-b6bd-9edade5ee567",
-//     name: "Olivia Owner",
-//     role: "user",
-//   },
-//   {
-//     id: "cf6a80e6-35ff-4cfe-9f7a-4a30c2d90979",
-//     name: "Uma User",
-//     role: "user",
-//   },
-// ];
+/**
+ * @swagger
+ * tags:
+ *   name: Users
+ *   description: User management APIs
+ */
+
+/**
+ * @swagger
+ * /users:
+ *   get:
+ *     summary: Get all users
+ *     tags: [Users]
+ *     responses:
+ *       200:
+ *         description: List of users
+ */
+
+/**
+ * @swagger
+ * /users:
+ *   post:
+ *     summary: Create new user (Admin only)
+ *     tags: [Users]
+ *     security:
+ *       - UserIdAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/CreateUserInput'
+ *     responses:
+ *       201:
+ *         description: User created
+ *       403:
+ *         description: Forbidden
+ */
+
+/**
+ * @swagger
+ * /users/{id}/role:
+ *   put:
+ *     summary: Update user role (Admin only)
+ *     tags: [Users]
+ *     security:
+ *       - UserIdAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/UpdateUserRoleInput'
+ *     responses:
+ *       200:
+ *         description: Role updated
+ *       403:
+ *         description: Forbidden
+ */
+
+/**
+ * @swagger
+ * /users/{id}:
+ *   delete:
+ *     summary: Delete user (Admin only)
+ *     tags: [Users]
+ *     security:
+ *       - UserIdAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: User deleted
+ *       404:
+ *         description: Not found
+ */

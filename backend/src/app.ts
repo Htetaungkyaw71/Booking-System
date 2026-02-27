@@ -10,25 +10,20 @@ import { fileURLToPath } from "node:url";
 import path from "node:path";
 
 // // Get the directory name of the current module
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-// // Construct path relative to this file
-// const swaggerPath = path.join(__dirname, "../public/swagger.yaml");
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
 
 // const swaggerPath = path.join(__dirname, "swagger.yaml");
 // const swaggerDocument = YAML.load(swaggerPath);
-// OR using YAML.load with correct path
-// const swaggerDocument = YAML.load(path.join(process.cwd(), 'swagger.yaml'))
 
-const swaggerPath = path.join(__dirname, "swagger.yaml");
-const swaggerDocument = YAML.load(swaggerPath);
+import { swaggerSpec } from "./config/swagger.js";
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+// app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use("/api", systemRoutes);
 app.use("/api/bookings", bookingRoutes);
