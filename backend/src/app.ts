@@ -9,17 +9,20 @@ import YAML from "yamljs";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 
-// Get the directory name of the current module
+// // Get the directory name of the current module
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Construct path relative to this file
-const swaggerPath = path.join(__dirname, "../public/swagger.yaml");
-const swaggerDocument = YAML.load(swaggerPath);
+// // Construct path relative to this file
+// const swaggerPath = path.join(__dirname, "../public/swagger.yaml");
+
+// const swaggerPath = path.join(__dirname, "swagger.yaml");
+// const swaggerDocument = YAML.load(swaggerPath);
 // OR using YAML.load with correct path
 // const swaggerDocument = YAML.load(path.join(process.cwd(), 'swagger.yaml'))
 
-// const swaggerDocument = YAML.load("./swagger.yaml");
+const swaggerPath = path.join(__dirname, "swagger.yaml");
+const swaggerDocument = YAML.load(swaggerPath);
 
 const app = express();
 
