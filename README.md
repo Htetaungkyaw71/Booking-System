@@ -1,208 +1,238 @@
-🚀 Booking System (Full-Stack Application)
+# 🚀 Booking System (Full-Stack Application)
 
-A full-stack Booking Management System built with React, Vite, Node.js, Express, TypeScript, and Prisma.
+A full-stack Booking Management System built with **React, Vite, Node.js, Express, TypeScript, and Prisma**.
 
 This project demonstrates authentication, role-based access control, booking management, admin user management, and production-ready architecture.
 
-🏗 Project Structure
+---
+
+## 🏗 Project Structure
+
+```
 booking-system/
 │
-├── frontend/ → React + Vite Client
-├── backend/ → Node.js + Express + Prisma API
+├── frontend/   → React + Vite Client
+├── backend/    → Node.js + Express + Prisma API
 └── README.md
-✨ Features
-🔐 Authentication
+```
 
-JWT-based authentication
+---
 
-Protected routes (Frontend + Backend)
+## ✨ Features
 
-Role-based authorization (Admin / User)
+### 🔐 Authentication
 
-👥 Admin Management
+- JWT-based authentication
+- Protected routes (Frontend + Backend)
+- Role-based authorization (Admin / User)
 
-Create users
+### 👥 Admin Management
 
-Update users
+- Create users
+- Update users
+- Delete users
+- Admin cannot delete or update themselves
 
-Delete users
+### 📅 Booking System
 
-Admin cannot delete or update themselves
+- Users can view their bookings
+- Optimized API fetching with Redux
+- Prevents unnecessary refetching on route change
 
-📅 Booking System
+### 🛡 Security
 
-Users can view their bookings
+- Zod request validation
+- Middleware-based role protection
+- Environment variable configuration
 
-Optimized API fetching with Redux
+### 📘 API Documentation
 
-Prevents unnecessary refetching on route change
+- Swagger documentation available in backend
 
-🛡 Security
+---
 
-Zod request validation
-
-Middleware-based role protection
-
-Environment variable configuration
-
-📘 API Documentation
-
-Swagger documentation available in backend
-
-🖥 Frontend (React + Vite)
+# 🖥 Frontend (React + Vite)
 
 Located inside:
 
+```
 /frontend
-Tech Stack
+```
 
-React
+### Tech Stack
 
-Vite
+- React
+- Vite
+- Redux Toolkit
+- React Router v6
+- Axios
+- Tailwind CSS
 
-Redux Toolkit
+### Run Frontend
 
-React Router v6
-
-Axios
-
-Tailwind CSS
-
-Run Frontend
+```
 cd frontend
 npm install
 npm run dev
+```
 
 Frontend runs on:
 
+```
 http://localhost:5173
-⚙️ Backend (Node.js + TypeScript)
+```
+
+---
+
+# ⚙️ Backend (Node.js + TypeScript)
 
 Located inside:
 
+```
 /backend
-Tech Stack
+```
 
-Node.js
+### Tech Stack
 
-Express 5
+- Node.js
+- Express 5
+- TypeScript
+- Prisma ORM
+- PostgreSQL
+- Zod
+- Swagger
 
-TypeScript
+### Run Backend
 
-Prisma ORM
-
-PostgreSQL
-
-Zod
-
-Swagger
-
-Run Backend
+```
 cd backend
 npm install
 npm run dev
+```
 
 Backend runs on:
 
+```
 http://localhost:3000
+```
 
 Swagger documentation:
 
+```
 http://localhost:3000/api-docs
-🌍 Environment Setup
-Backend .env
+```
 
-Inside /backend:
+---
 
+# 🌍 Environment Setup
+
+## Backend `.env`
+
+Inside `/backend`:
+
+```
 DATABASE_URL=postgresql://user:password@localhost:5432/booking_db
-PORT=3000
+PORT=5000
+```
 
-Frontend .env
+## Frontend `.env`
 
-Inside /frontend:
+Inside `/frontend`:
 
+```
 VITE_API_URL=http://localhost:3000/api
+```
 
 ⚠️ Important:
 
-Never commit .env
+- Never commit `.env`
+- Restart server after updating environment variables
 
-Restart server after updating environment variables
+---
 
-🔄 Full Setup (Step-by-Step)
+# 🔄 Full Setup (Step-by-Step)
 
 1️⃣ Clone repository
 
+```
 git clone <your-repo-url>
 cd booking-system
+```
 
 2️⃣ Setup backend
 
+```
 cd backend
 npm install
 npx prisma generate
 npx prisma migrate dev
 npm run dev
+```
 
 3️⃣ Setup frontend (new terminal)
 
+```
 cd frontend
 npm install
 npm run dev
-🧠 Architecture Overview
+```
+
+---
+
+# 🧠 Architecture Overview
 
 Frontend:
 
-Redux manages global state
-
-API calls optimized using status-based fetching
-
-Protected routes using custom wrapper
-
-Custom 404 page
+- Redux manages global state
+- API calls optimized using status-based fetching
+- Protected routes using custom wrapper
+- Custom 404 page
 
 Backend:
 
-RESTful API structure
+- RESTful API structure
+- Middleware-based authentication
+- Role-based access control
+- Prisma ORM for database operations
+- Request validation with Zod
 
-Middleware-based authentication
+---
 
-Role-based access control
+# 📌 Production Build
 
-Prisma ORM for database operations
+### Backend
 
-Request validation with Zod
-
-📌 Production Build
-Backend
+```
 cd backend
 npm run build
 npm start
-Frontend
+```
+
+### Frontend
+
+```
 cd frontend
 npm run build
 npm run preview
-🚀 Future Improvements
+```
 
-Refresh token system
+---
 
-Docker setup
+# 🚀 Future Improvements
 
-CI/CD pipeline
+- Refresh token system
+- Docker setup
+- CI/CD pipeline
+- Unit & integration testing
+- Rate limiting
+- Logging system
+- Email verification
+- Dark mode
+- Toast notifications
 
-Unit & integration testing
+---
 
-Rate limiting
-
-Logging system
-
-Email verification
-
-Dark mode
-
-Toast notifications
-
-👨‍💻 Author
+# 👨‍💻 Author
 
 Htet Aung Kyaw
 Full-Stack Web Developer
