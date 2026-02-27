@@ -116,6 +116,24 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Booking"
+  /mybookings:
+    get:
+      summary: Get bookings of current authenticated user
+      description: Returns bookings that belong to the authenticated user based on x-user-id header.
+      tags: [Bookings]
+      responses:
+        200:
+          description: List of user's bookings
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Booking"
+        401:
+          description: Unauthorized (Missing or invalid x-user-id header)
+        404:
+          description: No bookings found
 
     post:
       summary: Create booking

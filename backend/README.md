@@ -144,7 +144,7 @@ Swagger UI is available for API testing and documentation.
 
 After starting the server, visit:
 
-[http://localhost:3000/api-docs](http://localhost:3000/api-docs)
+[http://localhost:3000/docs](http://localhost:3000/api-docs)
 
 ---
 
